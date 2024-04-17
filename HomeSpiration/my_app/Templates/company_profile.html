@@ -1,0 +1,191 @@
+<!-- company_profile.html -->
+
+<!DOCTYPE html>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <link rel="icon" href="{% static '/images/fevicon.png' %}" type="image/gif" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>HomeSpiration</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="{% static 'https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap' %}" rel="stylesheet" />
+    <link href="{% static '/css/font-awesome.min.css' %}" rel="stylesheet" />
+
+    <!-- Custom Styles -->
+    <link href="{% static '/css/style.css' %}" rel="stylesheet" />
+    <link href="{% static '/css/responsive.css' %}" rel="stylesheet" />
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}" />
+
+    <!-- fonts style -->
+    <link href="{% static '/https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap' %}" rel="stylesheet" />
+
+    <!-- font awesome style -->
+    <link href="{% static '/css/font-awesome.min.css' %}" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="{% static '/css/style.css' %}" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="{% static '/css/responsive.css' %}" rel="stylesheet" />
+
+    <style>
+       
+        .profile-card {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .company-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .company-details {
+            padding: 15px;
+        }
+
+        .company-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #0056b3;
+            margin-top: 15px;
+        }
+
+        .company-info {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .edit-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            text-align: center;
+        }
+    
+        .company-image {
+            height: 300px;
+            object-fit: cover;
+            width: 100%;
+        }
+        .company-details {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: -150px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .company-name {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+        .company-info {
+            margin-bottom: 10px;
+        }
+        .project-stats-card {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+    </style>
+</head>
+<body>
+    <div>
+        <!-- header section strats -->
+        <header class="header_section long_section px-0">
+          <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="{% url 'employee' %}">
+              <span>
+                HomeSpiration
+              </span>
+            </a>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""> </span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+                  <ul class="navbar-nav  ">
+                    <li class="nav-item ">
+                      <a class="nav-link" href="{% url 'employee' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                      <a class="nav-link" href="{% url 'add_project' %}"> Add Projects</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'show_projects' %}">view Projects</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'add_company' %}">Add Details</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'view_company_profile' %}">My Profile</a>
+                    </li>
+               
+                    </li>
+                  </ul>
+                </div>
+                
+                <div class="quote_btn-container">
+                  <h5></h5>
+                  <a></a>
+                  <!--<i class="fa fa-user" aria-hidden="true"></i>-->
+                  <a></a>
+                  <a></a>
+                  <p> Hello, {{ user.username }}!</p>
+                  <a></a>
+                  <a href="{% url 'logout' %}">
+                      <span>
+                        Logout
+                      </span>
+                      
+                    </a>
+                  <!--<form class="form-inline">
+                    <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                  </form>-->
+                </div>
+              </div>
+            </nav>
+          </header>
+          <!-- end header section -->
+        </div>
+      <a href="{% url 'update_company_profile' %}" class="btn btn-primary">Edit Profile</a>
+    <h1>{{ company.company_name }} Profile</h1>
+    <p><strong>Description:</strong> {{ company.description }}</p>
+    <p><strong>Year Established:</strong> {{ company.year_established }}</p>
+    <p><strong>Completed Projects:</strong> {{ company.completed_projects_count }}</p>
+    <p><strong>Ongoing Projects:</strong> {{ company.ongoing_projects_count }}</p>
+    <p><strong>Address:</strong> {{ company.address }}</p>
+    <p><strong>Company Size:</strong> {{ company.company_size }}</p>
+    {% if company.company_image %}
+        <img src="{{ company.company_image.url }}" alt="Company Image">
+    {% endif %}
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

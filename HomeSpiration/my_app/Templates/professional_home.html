@@ -1,0 +1,833 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="{% static '/images/fevicon.png' %}" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>HomeSpiration</title>
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="{% static '/https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap' %}" rel="stylesheet" />
+
+  <!-- font awesome style -->
+  <link href="{% static '/css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static '/css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static '/css/responsive.css' %}" rel="stylesheet" />
+
+  <style>
+    :root {
+        --modal-header-bg: linear-gradient(135deg, #0fa3b1, #fe7f2d);
+        --modal-bg-color: #fff;
+        --modal-border-radius: 15px;
+        --modal-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --font-family: 'Poppins', sans-serif;
+        --modal-header-color: #fff;
+        --btn-primary-bg: #e91446;
+        --btn-primary-hover-bg: #43e491;
+        --btn-primary-border: #2ee078;
+        --btn-bg-color: #22ec4e;
+        --btn-hover-shadow: 6px 6px 10px #26567a, -6px -6px 10px #ffffff;
+    }
+
+    .modal-content {
+        background-color: var(--modal-bg-color);
+        border-radius: var(--modal-border-radius);
+        box-shadow: var(--modal-shadow);
+        font-family: var(--font-family);
+    }
+
+    .modal-header {
+        background: var(--modal-header-bg);
+        color: var(--modal-header-color);
+        border-top-left-radius: var(--modal-border-radius);
+        border-top-right-radius: var(--modal-border-radius);
+    }
+
+    .modal-title {
+        font-weight: 600;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .btn-primary {
+        background-color: var(--btn-primary-bg);
+        border-color: var(--btn-primary-border);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--btn-primary-hover-bg);
+        border-color: var(--btn-primary-border);
+    }
+
+    /* Optional: Add a fade-in animation to your modal */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .modal.fade .modal-dialog {
+        animation: fadeIn .3s;
+        transition: transform .3s ease-out;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+        .modal-content {
+            margin: 10px; /* Adjust modal margins on smaller screens */
+        }
+    }
+
+    .btn {
+    background-color: var(--btn-bg-color);
+    box-shadow: var(--btn-shadow);
+    border: none;
+    color: #515151;
+    font-weight: 600;
+    border-radius: 50px;
+    padding: .75rem 1.5rem;
+    transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: var(--btn-bg-color);
+        box-shadow: var(--btn-hover-shadow);
+        color: #393939;
+    }
+
+    /* Neumorphism effect for buttons */
+    .btn-primary {
+        background-color: var(--modal-header-bg);
+        border: none;
+        color: white;
+        box-shadow: none;
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #0fa3b1, #ef9d10);
+        color: #fff;
+    }
+
+</style>
+
+
+
+</head>
+
+<body>
+
+    <!-- Modal 1 - Company Type & Services Offered -->
+    <div class="modal" id="modal1" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Company Type & Services Offered</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formModal1" data-next-modal="modal2" action="{% url 'submit_professional_type_services' %}" method="post">
+                        {% csrf_token %}
+                        <!-- Company Type -->
+                        <div class="form-group">
+                            <label for="companyTypeSelect">Company Type</label>
+                            <select multiple class="form-control" id="companyTypeSelect" name="company_type">
+                                <option value="Local Builder">Local Builder</option>
+                                <option value="Local Retailer">Local Retailer</option>
+                                <option value="International Builder">International Builder</option>
+                                <option value="International Retailer">International Retailer</option>
+                            </select>
+                        </div>
+                        <!-- Services Offered -->
+                        <div class="form-group">
+                            <label for="servicesOfferedSelect">Services Offered</label>
+                            <select multiple class="form-control" id="servicesOfferedSelect" name="services_offered">
+                                <option value="Masons">Masons</option>
+                                <option value="Electricals">Electricals</option>
+                                <option value="Plumbing">Plumbing</option>
+                                <option value="Carpentry">Carpentry</option>
+                            </select>
+                        </div>
+                        <button id="continueModal1" type="button" class="btn btn-primary">Continue</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+<!-- Modal 2 - Website Link & More -->
+<div class="modal" id="modal2" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Website & Professional Info</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formModal2" data-next-modal="modal3" action="{% url 'submit_professional_website_info' %}" method="post">
+                    {% csrf_token %}
+                    <!-- Website Link -->
+                    <div class="form-group">
+                        <label for="websiteLinkInput">Website Link</label>
+                        <input type="url" class="form-control" id="websiteLinkInput" name="website_link" placeholder="https://example.com">
+                    </div>
+                    <!-- Professional Information -->
+                    <div class="form-group">
+                        <label for="professionalInfoTextarea">Professional Information</label>
+                        <textarea class="form-control" id="professionalInfoTextarea" name="professional_info" rows="3"></textarea>
+                    </div>
+                    <!-- Business Description -->
+                    <div class="form-group">
+                        <label for="businessDescriptionTextarea">Business Description</label>
+                        <textarea class="form-control" id="businessDescriptionTextarea" name="business_description" rows="3"></textarea>
+                    </div>
+                    <!-- Certifications and Awards -->
+                    <div class="form-group">
+                        <label for="certificationsInput">Certifications and Awards</label>
+                        <input type="text" class="form-control" id="certificationsInput" name="certifications" placeholder="Certified Professional">
+                    </div>
+                    <button id="continueModal2" type="button" class="btn btn-primary">Continue</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal 3 - Final Details -->
+<div class="modal" id="modal3" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Website & Professional Info</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formModal3" action="{% url 'submit_professional_final_details' %}" enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <label for="typical_job_cost">Typical Job Cost</label>
+                        <input type="number" class="form-control" id="typical_job_cost" name="typical_job_cost" placeholder="1234">
+                    </div>
+                    <div class="form-group">
+                        <label for="number_of_projects">Number of Projects</label>
+                        <input type="number" class="form-control" id="number_of_projects" name="number_of_projects" placeholder="number of projects">
+                    </div>
+                    <div class="form-group">
+                      <label for="profile_picture">Profile Picture</label>
+                      <input type="file" class="form-control" id="profile_picture" name="profile_picture" placeholder="profile_picture">
+                    </div>
+                    <div class="form-group">
+                    <label for="cover_photo">Cover Photo</label>
+                    <input type="file" class="form-control" id="cover_photo" name="cover_photo" placeholder="cover_photo">
+                    </div>
+                    <button id="continueModal3" type="button" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section long_section px-0">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="index.html">
+          <span>
+            HomeSpiration
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+            <ul class="navbar-nav  ">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}"> About</a>
+              </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'Design' %}">Design Here</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'add_project' %}"> Add Projects</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'show_projects' %}">view Projects</a>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
+            </ul>
+          </div>
+          <div class="quote_btn-container">
+            <img src="{% if user.professional.profile_photo %}{{ user.professional.profile_photo.url }}{% else %}{% static 'images/user1.jpg' %}{% endif %}" alt="Profile Picture" class="rounded-circle mb-3" style="width: 40px; height: 40px;">
+            <h5>{{ user.username }}</h5>
+            <form class="form-inline">
+              <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    
+    <section class="slider_section long_section">
+      <div id="customCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="detail-box">
+                    <h1>
+                      HomeSpiration <br></h1>
+                      <h2>Your Creative Home Imrpovement Companion</h2>
+                    <div class="btn-box">
+                      <a href="" class="btn1">
+                        Contact Us
+                      </a>
+                      <a href="" class="btn2">
+                        About Us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="img-box">
+                    <img src="{% static '/images/slider-img.png' %}" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="detail-box">
+                    <p>
+                    </p>
+                    <div class="btn-box">
+                      <a href="" class="btn1">
+                        Contact Us
+                      </a>
+                      <a href="" class="btn2">
+                        About Us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="img-box">
+                    <img src="{% static '/images/slider-img.png' %}" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="detail-box">
+                    <div class="btn-box">
+                      <a href="" class="btn1">
+                        Contact Us
+                      </a>
+                      <a href="" class="btn2">
+                        About Us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="img-box">
+                    <img src="{% static '/images/slider-img.png' %}" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ol class="carousel-indicators">
+          <li data-target="#customCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#customCarousel" data-slide-to="1"></li>
+          <li data-target="#customCarousel" data-slide-to="2"></li>
+        </ol>
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding long_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{% static '/images/about-img.png' %}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                About Us
+              </h2>
+            </div>
+            <a href="">
+              Read More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+  <!-- blog section -->
+
+  <section class="blog_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Latest Blog
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+              <img src="{% static '/images/b1.jpg' %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+              </h5>
+              <p>
+              </p>
+              <a href="">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+              <img src="{% static '/images/b2.jpg' %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Anything embarrassing hidden in the middle
+              </h5>
+              <p>
+                alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+              </p>
+              <a href="">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+              <img src="{% static '/images/b3.jpg' %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Molestias magni natus dolores odio commodi. Quaerat!
+              </h5>
+              <p>
+                alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+              </p>
+              <a href="">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end blog section -->
+
+  <!-- client section -->
+
+  <section class="client_section layout_padding-bottom">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Testimonial
+        </h2>
+      </div>
+      <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-md-11 col-lg-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="{% static '/images/client.jpg' %}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                    <div class="name">
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                      <h6>
+                        Siaalya
+                      </h6>
+                    </div>
+                    <p>
+                      It is a long established fact that a reader will be
+                      distracted by the readable cIt is a long established fact
+                      that a reader will be distracted by the readable c
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-11 col-lg-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="{% static '/images/client.jpg' %}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                    <div class="name">
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                      <h6>
+                        Siaalya
+                      </h6>
+                    </div>
+                    <p>
+                      It is a long established fact that a reader will be
+                      distracted by the readable cIt is a long established fact
+                      that a reader will be distracted by the readable c
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-11 col-lg-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="{% static '/images/client.jpg' %}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                    <div class="name">
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                      <h6>
+                        Siaalya
+                      </h6>
+                    </div>
+                    <p>
+                      It is a long established fact that a reader will be
+                      distracted by the readable cIt is a long established fact
+                      that a reader will be distracted by the readable c
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel_btn-container">
+          <a class="carousel-control-prev" href="{% static '/#carouselExample2Controls' %}" role="button" data-slide="prev">
+            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="{% static '/#carouselExample2Controls' %}" role="button" data-slide="next">
+            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end client section -->
+
+  <!-- contact section -->
+  <section class="contact_section  long_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <div class="heading_container">
+              <h2>
+                Contact Us
+              </h2>
+            </div>
+            <form action="">
+              <div>
+                <input type="text" placeholder="Your Name" />
+              </div>
+              <div>
+                <input type="text" placeholder="Phone Number" />
+              </div>
+              <div>
+                <input type="email" placeholder="Email" />
+              </div>
+              <div>
+                <input type="text" class="message-box" placeholder="Message" />
+              </div>
+              <div class="btn_box">
+                <button>
+                  SEND
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="map_container">
+            <div class="map">
+              <div id="googleMap"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+
+  <!-- info section -->
+  <section class="info_section long_section">
+
+    <div class="container">
+      <div class="contact_nav">
+        <a href="">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+          <span>
+            Call : +01 123455678990
+          </span>
+        </a>
+        <a href="">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <span>
+            Email : demo@gmail.com
+          </span>
+        </a>
+        <a href="">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <span>
+            Location
+          </span>
+        </a>
+      </div>
+
+      <div class="info_top ">
+        <div class="row ">
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="info_links">
+              <h4>
+                QUICK LINKS
+              </h4>
+              <div class="info_links_menu">
+                <a class="" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="" href="about.html"> About</a>
+                <a class="" href="furniture.html">Furniture</a>
+                <a class="" href="blog.html">Blog</a>
+                <a class="" href="contact.html">Contact Us</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mx-auto">
+            <div class="info_post">
+              <h5>
+                INSTAGRAM FEEDS
+              </h5>
+              <div class="post_box">
+                <div class="img-box">
+                  <img src="images/f1.png" alt="">
+                </div>
+                <div class="img-box">
+                  <img src="images/f2.png" alt="">
+                </div>
+                <div class="img-box">
+                  <img src="images/f3.png" alt="">
+                </div>
+                <div class="img-box">
+                  <img src="images/f4.png" alt="">
+                </div>
+                <div class="img-box">
+                  <img src="images/f5.png" alt="">
+                </div>
+                <div class="img-box">
+                  <img src="images/f6.png" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info_form">
+              <h4>
+                SIGN UP TO OUR NEWSLETTER
+              </h4>
+              <form action="">
+                <input type="text" placeholder="Enter Your Email" />
+                <button type="submit">
+                  Subscribe
+                </button>
+              </form>
+              <div class="social_box">
+                <a href="">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end info_section -->
+
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="{% static '/https://html.design/' %}">Free Html Templates</a>
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+
+  <!-- jQery -->
+  <script src="{% static '/js/jquery-3.4.1.min.js' %}"></script>
+  <!-- bootstrap js -->
+  <script src="{% static '/js/bootstrap.js' %}"></script>
+  <!-- custom js -->
+  <script src="{% static '/js/custom.js' %}"></script>
+  <!-- Google Map -->
+  <script src="{% static '/https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap' %}"></script>
+  <!-- End Google Map -->
+
+  <!-- Include jQuery -->
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <!-- Include Bootstrap CSS in the <head> -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+    <script>
+      $(document).ready(function() {
+          // Open the first modal on page load
+          $('#modal1').modal('show');
+      
+          // Generic function for form submission with AJAX
+          function submitFormAndShowNext(formId, isFileUpload = false) {
+              var $form = $('#' + formId);
+              var formData = isFileUpload ? new FormData($form[0]) : $form.serialize();
+              var actionUrl = $form.attr('action');
+              $.ajax({
+                  type: "POST",
+                  url: actionUrl,
+                  data: formData,
+                  processData: !isFileUpload, // For FormData, this must be false
+                  contentType: isFileUpload ? false : 'application/x-www-form-urlencoded; charset=UTF-8', // For FormData, this must be false
+                  success: function(response) {
+                      console.log("Form submission successful");
+                      $('#' + formId).closest('.modal').modal('hide');
+                      if (response.success && response.nextModal) {
+                          $('#' + response.nextModal).modal('show');
+                      } else if (!response.success) {
+                          alert("Error: " + response.error); // Basic error handling
+                      }
+                  },
+                  error: function(xhr, status, error) {
+                      console.error("Form submission error: " + error);
+                  }
+              });
+          }
+      
+          // Event listeners for continue buttons
+          $('#continueModal1').click(function() { submitFormAndShowNext('formModal1'); });
+          $('#continueModal2').click(function() { submitFormAndShowNext('formModal2'); });
+          // For formModal3, we indicate it includes file uploads
+          $('#continueModal3').click(function() { submitFormAndShowNext('formModal3', true); });
+      
+          // CSRF Token setup for AJAX requests
+          function getCSRFToken() {
+              return $('input[name="csrfmiddlewaretoken"]').val();
+          }
+      
+          $.ajaxSetup({
+              beforeSend: function(xhr, settings) {
+                  if (!this.crossDomain) {
+                      xhr.setRequestHeader("X-CSRFToken", getCSRFToken());
+                  }
+              }
+          });
+      });
+      </script>
+      
+        
+        
+    
+
+</body>
+
+</html>

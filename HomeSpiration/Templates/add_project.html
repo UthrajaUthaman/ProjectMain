@@ -1,0 +1,454 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Project</title>
+
+    <style>
+        /* Your CSS styles here */
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        form label {
+            color: #444;
+            font-weight: 500;
+        }
+
+        form input[type="text"],
+        form input[type="date"],
+        form input[type="number"],
+        form input[type="file"],
+        form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            transition: border 0.3s;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="date"]:focus,
+        form input[type="number"]:focus,
+        form select:focus {
+            border: 1px solid #0056b3;
+            box-shadow: 0 0 8px rgba(0, 86, 179, 0.2);
+        }
+
+        form button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #004494;
+        }
+        /* Container and Form Styles */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        h2 {
+            color: #131415;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        form {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            color: #444;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        form input[type="text"],
+        form input[type="date"],
+        form input[type="number"],
+        form input[type="file"],
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            transition: border 0.3s;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="date"]:focus,
+        form input[type="number"]:focus,
+        form select:focus {
+            border: 1px solid #0056b3;
+            box-shadow: 0 0 8px rgba(0, 86, 179, 0.2);
+            outline: none;
+        }
+
+        form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #93acac;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #83c7c7;
+        }
+    </style>
+</head>
+<body class="sub_page">
+    <!-- Your header content here -->
+     <!-- Basic -->
+ <meta charset="utf-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+ <!-- Mobile Metas -->
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+ <!-- Site Metas -->
+ <link rel="icon" href="{% static '/images/fevicon.png' %}" type="image/gif" />
+ <meta name="keywords" content="" />
+ <meta name="description" content="" />
+ <meta name="author" content="" />
+
+ <title>HomeSpiration</title>
+
+
+ <!-- bootstrap core css -->
+ <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}" />
+
+ <!-- fonts style -->
+ <link href="{% static '/https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap' %}" rel="stylesheet" />
+
+ <!-- font awesome style -->
+ <link href="{% static '/css/font-awesome.min.css' %}" rel="stylesheet" />
+ <!-- Custom styles for this template -->
+ <link href="{% static '/css/style.css' %}" rel="stylesheet" />
+ <!-- responsive style -->
+ <link href="{% static '/css/responsive.css' %}" rel="stylesheet" />
+
+</head>
+
+<body class="sub_page">
+
+ <div>
+   <!-- header section strats -->
+   <header class="header_section long_section px-0">
+     <nav class="navbar navbar-expand-lg custom_nav-container ">
+       <a class="navbar-brand" href="">
+         <span>
+           HomeSpiration
+         </span>
+       </a>
+       </a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class=""> </span>
+       </button>
+
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+             <ul class="navbar-nav  ">
+               <li class="nav-item ">
+                 <a class="nav-link" href="{% url 'professional_dashboard' %}">Home <span class="sr-only">(current)</span></a>
+               </li>
+               <li class="nav-item active">
+                 <a class="nav-link" href="{% url 'add_project' %}"> Add Projects</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="{% url 'show_projects' %}">view Projects</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="">Add Details</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="">My Profile</a>
+               </li>
+          
+               </li>
+             </ul>
+           </div>
+           
+           <div class="quote_btn-container">
+             <h5></h5>
+             <a></a>
+             <!--<i class="fa fa-user" aria-hidden="true"></i>-->
+             <a></a>
+             <a></a>
+             <p> Hello, {{ user.username }}!</p>
+             <a></a>
+             <a href="{% url 'logout' %}">
+                 <span>
+                   Logout
+                 </span>
+                 
+               </a>
+             <!--<form class="form-inline">
+               <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                 <i class="fa fa-search" aria-hidden="true"></i>
+               </button>
+             </form>-->
+           </div>
+         </div>
+       </nav>
+     </header>
+     <!-- end header section -->
+   </div>
+
+
+    <!-- Body Section with Form -->
+    <div class="container">
+        <h2><b>Add New Project</b></h2>
+        <form method="post" enctype="multipart/form-data" id="addProjectForm">
+            {% csrf_token %}
+            <!-- Client Name -->
+            <label for="client_name">Client Name:</label>
+            <input type="text" id="client_name" name="client_name" required>
+            <span id="client_name_error" class="error"></span><br>
+
+            <!-- Project Name -->
+            <label for="project_name">Project Name:</label>
+            <input type="text" id="project_name" name="project_name" required>
+            <span id="project_name_error" class="error"></span><br>
+
+            <!-- Address -->
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+            <span id="address_error" class="error"></span><br>
+
+            <!-- Start Date -->
+            <label for="start_date">Start Date:</label>
+            <input type="date" id="start_date" name="start_date" required>
+            <span id="start_date_error" class="error"></span><br>
+
+            <!-- Expected End Date -->
+            <label for="expected_end_date">Expected End Date:</label>
+            <input type="date" id="expected_end_date" name="expected_end_date" required>
+            <span id="expected_end_date_error" class="error"></span><br>
+
+            <!-- Total Expected Duration -->
+            <label for="total_expected_duration">Total Expected Duration (in days):</label>
+            <input type="number" id="total_expected_duration" name="total_expected_duration" required>
+            <span id="total_expected_duration_error" class="error"></span><br>
+
+            <!-- Cost of Construction -->
+            <label for="cost_of_construction">Cost of Construction:</label>
+            <input type="number" id="cost_of_construction" name="cost_of_construction" required>
+            <span id="cost_of_construction_error" class="error"></span><br>
+
+            <!-- Square Feet -->
+            <label for="square_feet">Square Feet:</label>
+            <input type="number" id="square_feet" name="square_feet" required>
+            <span id="square_feet_error" class="error"></span><br>
+
+            <!-- Engineer Name -->
+            <label for="engineer_name">Engineer Name:</label>
+            <input type="text" id="engineer_name" name="engineer_name">
+            <span id="engineer_name_error" class="error"></span><br>
+
+            <!-- Contact Number -->
+            <label for="contact_number">Contact Number:</label>
+            <input type="text" id="contact_number" name="contact_number">
+            <span id="contact_number_error" class="error"></span><br>
+
+            <!-- Status -->
+            <label for="status">Status:</label>
+            <select id="status" name="status" required>
+                <option value="Not Started">Not Started</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <span id="status_error" class="error"></span><br>
+
+            <!-- Image of Building -->
+            <label for="image_of_building">Image of Building:</label>
+            <input type="file" id="image_of_building" name="image_of_building" accept="image/*">
+            <span id="image_of_building_error" class="error"></span><br>
+
+            <!-- Image of Map -->
+            <label for="image_of_map">Image of Map:</label>
+            <input type="file" id="image_of_map" name="image_of_map" accept="image/*">
+            <span id="image_of_map_error" class="error"></span><br>
+
+            <button type="submit">Add Project</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('addProjectForm').addEventListener('submit', function(e) {
+            var isValid = true;
+
+            // Client Name Validation
+            var clientName = document.getElementById('client_name').value;
+            if (!/^[A-Za-z\s]+$/.test(clientName)) {
+                document.getElementById('client_name_error').textContent = 'Client name should only contain letters and spaces.';
+                isValid = false;
+            } else {
+                document.getElementById('client_name_error').textContent = '';
+            }
+
+            // Project Name Validation
+            var projectName = document.getElementById('project_name').value;
+            if (!/^[A-Za-z0-9\s]+$/.test(projectName)) {
+                document.getElementById('project_name_error').textContent = 'Project name should only contain letters, numbers, and spaces.';
+                isValid = false;
+            } else {
+                document.getElementById('project_name_error').textContent = '';
+            }
+
+            // Address Validation (No specific validation provided)
+
+            // Start Date Validation
+            var startDate = document.getElementById('start_date').value;
+            var endDate = document.getElementById('expected_end_date').value;
+            if (!isValidDate(startDate)) {
+                document.getElementById('start_date_error').textContent = 'Invalid start date.';
+                isValid = false;
+            } else if (!isValidDate(endDate)) {
+                document.getElementById('start_date_error').textContent = '';
+                document.getElementById('expected_end_date_error').textContent = 'Invalid end date.';
+                isValid = false;
+            } else if (new Date(startDate) >= new Date(endDate)) {
+                document.getElementById('start_date_error').textContent = 'Start date should be before the end date.';
+                document.getElementById('expected_end_date_error').textContent = 'End date should be after the start date.';
+                isValid = false;
+            } else {
+                document.getElementById('start_date_error').textContent = '';
+                document.getElementById('expected_end_date_error').textContent = '';
+            }
+
+            // Total Expected Duration Validation
+            var totalExpectedDuration = document.getElementById('total_expected_duration').value;
+            if (!/^\d+$/.test(totalExpectedDuration) || parseInt(totalExpectedDuration) <= 0) {
+                document.getElementById('total_expected_duration_error').textContent = 'Total expected duration should be a positive number.';
+                isValid = false;
+            } else {
+                document.getElementById('total_expected_duration_error').textContent = '';
+            }
+
+            // Cost of Construction Validation
+            var costOfConstruction = document.getElementById('cost_of_construction').value;
+            if (!/^\d{1,10}$/.test(costOfConstruction) || parseInt(costOfConstruction) <= 0) {
+                document.getElementById('cost_of_construction_error').textContent = 'Cost of construction should be a positive number with up to 10 digits.';
+                isValid = false;
+            } else {
+                document.getElementById('cost_of_construction_error').textContent = '';
+            }
+
+            // Square Feet Validation
+            var squareFeet = document.getElementById('square_feet').value;
+            if (!/^\d+$/.test(squareFeet) || parseInt(squareFeet) <= 0) {
+                document.getElementById('square_feet_error').textContent = 'Square feet should be a positive number.';
+                isValid = false;
+            } else {
+                document.getElementById('square_feet_error').textContent = '';
+            }
+
+            // Engineer Name Validation (No specific validation provided)
+
+            // Status Validation
+            var status = document.getElementById('status').value;
+            if (status === '') {
+                document.getElementById('status_error').textContent = 'Please select a status.';
+                isValid = false;
+            } else {
+                document.getElementById('status_error').textContent = '';
+            }
+
+            // Image of Building and Image of Map Validation
+            var imageOfBuilding = document.getElementById('image_of_building').value;
+            var imageOfMap = document.getElementById('image_of_map').value;
+            var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+            if (imageOfBuilding && !allowedExtensions.exec(imageOfBuilding)) {
+                document.getElementById('image_of_building_error').textContent = 'Invalid image format. Please use JPG, JPEG, PNG, or GIF.';
+                isValid = false;
+            } else {
+                document.getElementById('image_of_building_error').textContent = '';
+            }
+            if (imageOfMap && !allowedExtensions.exec(imageOfMap)) {
+                document.getElementById('image_of_map_error').textContent = 'Invalid image format. Please use JPG, JPEG, PNG, or GIF.';
+                isValid = false;
+            } else {
+                document.getElementById('image_of_map_error').textContent = '';
+            }
+
+            if (!isValid) {
+                e.preventDefault(); // Prevent form submission if validation fails
+            }
+        });
+
+        function isValidDate(dateStr) {
+            var dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+            if (!dateRegex.test(dateStr)) return false;
+            var dateParts = dateStr.split("-");
+            var year = parseInt(dateParts[0]);
+            var month = parseInt(dateParts[1]);
+            var day = parseInt(dateParts[2]);
+            if (month < 1 || month > 12 || day < 1 || day > 31) return false;
+            if ((month === 4 || month === 6 || month === 9 || month === 11) && day > 30) return false;
+            if (month === 2) {
+                var isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+                if ((isLeapYear && day > 29) || (!isLeapYear && day > 28)) return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
